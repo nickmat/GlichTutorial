@@ -2,28 +2,43 @@
 
 Tutorial Steps - Glich
 
-1 Glich Basic Script Language
+### 1 Glich Basic Script Language
 
-1.1 Hello World
+#### 1.1 Hello World
 
 ```
 // Hello World Script
 
 write "Hello World!" nl;
 ```
-1.1.1 Running Scripts
+##### 1.1.1 Running Scripts
 
-1.1.2 Glich Command Line glcs.exe
+##### 1.1.2 Glich Command Line glcs.exe
 
-1.1.3 Glich IDE Gliched gliched.exe
+##### 1.1.3 Glich IDE Gliched gliched.exe
 
-1.1.3 Basic syntax
+##### 1.1.3 Basic syntax
 
-1.2 Input and Output
+Comments (treated as whitespace)
+```
+// Single line comment
 
-1.2.1 Write Statement, Expressions and Literals
+/* Multi line comment
+write "This is commented out" nl;
+*/
+```
+All scripts consist of one or more statements.
+Some statements can contain sub-statements and so on...
 
-1.2.2 Let Statement and Variables
+#### 1.2 Input and Output
+
+Glich is designed to be embedded in a controlling program.
+The host program is responsible for how the input and output
+is presented to the user.
+
+##### 1.2.1 Write Statement, Expressions and Literals
+
+##### 1.2.2 Let Statement and Variables
 
 1.2.3 Mark Statement
 
