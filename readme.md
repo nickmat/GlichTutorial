@@ -30,6 +30,53 @@ write "This is commented out" nl;
 All scripts consist of one or more statements.
 Some statements can contain sub-statements and so on...
 
+Statements can take one of 3 forms.
+
+###### 1.1.3.1 Simple Statement
+
+This takes the form `name ... ;`.
+It starts with the statement name and ends with a **;** (semi-colon).
+Examples:-
+```
+mark test1;
+let name = 200;
+name += 10;
+file note write "notes.txt";
+```
+
+###### 1.1.3.2 Compound Statement
+A statement which contains one or more sub-statements.
+this has the form `name ... { sub-statement; ... }`
+The sub-statements may be normal statements
+or the may be specialist statements depending on context.
+Examples:-
+```
+function pluspos( a, b ) {
+    let x = a + b;
+    result = @if( x<0, -x, x );
+}
+object test {
+    values a b;
+    function sum {
+        result = a + b;
+    }
+}
+```
+These statements details will be explained later,
+for the moment we are just showing their construction.
+
+###### 1.1.3.1 Construction Statement
+These statements begin with a start name and end with an end name;
+There are currently ony two such statements. `if ... endif` and `do ... loop`.
+Example:-
+```
+do
+    while i < 10;
+    write value * i nl;
+    i += 1;
+loop
+```
+
 #### 1.2 Input and Output
 
 Glich is designed to be embedded in a controlling program.
