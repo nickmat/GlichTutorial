@@ -82,6 +82,17 @@ loop
 Glich is designed to be embedded in a controlling program.
 The host program is responsible for how the input and output
 is presented to the user.
+The script uses the `write expression ... ;`for standard output
+and the `@read(prompt)` expression for standard input.
+
+The following example was entered into the glcs console program:-
+```
+glcs: let name = @read("Enter your name: ");
+Enter your name: Nick
+glcs: write "Hello " + name + ", how are you?";
+Hello Nick, how are you?
+glcs:
+```
 
 ##### 1.2.1 Write Statement, Expressions and Literals
 
