@@ -96,6 +96,35 @@ glcs:
 
 ##### 1.2.1 Write Statement, Expressions and Literals
 
+The minimum write statement is:-
+```
+write expression;
+```
+An expression in Glich (as all other programming languages)
+is a value that executes in a way that ends up being another value.
+When that value in in a write statement
+it is converted to a text and sent to the program's output.
+
+###### 1.2.1.1 Glich Value Types
+
+In Glich, a value is one of ten types:-
+
+| Type | Example | Note |
+| ---  | --- | --- |
+| Number | 123 or 123n | 64-bit integer (Approx. +/- nine quintillion) |
+| Field | 456 or 456f | 32-bit integer with +/-infinity and ? (Not a number) |
+| Range | 5..10 | A range  of field values. |
+| RList | 1..20 \| 30..35 | A list of ranges |
+| Float | 10.0 | A floating point decimal number |
+| Boolean | true | Holds one of the values: true or false |
+| String | "Hello" | Text as a string of characters |
+| Object | {x: 56, "Hi"} | A named collection of values |
+| Error | Error (3): Must be integer. | Error in expression. |
+| Null | null | Not assigned a value. |
+
+
+
+
 ##### 1.2.2 Let Statement and Variables
 
 1.2.3 Mark Statement
