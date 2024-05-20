@@ -34,7 +34,7 @@ Statements can take one of 3 forms.
 
 ###### 1.1.3.1 Simple Statement
 
-This takes the form `name ... ;`.
+This takes the form `name ... ;`
 It starts with the statement name and ends with a **;** (semi-colon).
 Examples:-
 ```
@@ -63,7 +63,7 @@ object test {
 }
 ```
 These statements details will be explained later,
-for the moment we are just showing their construction.
+for the moment we are just looking at their form.
 
 ###### 1.1.3.1 Construction Statement
 These statements begin with a start name and end with an end name;
@@ -107,11 +107,17 @@ it is converted to a text and sent to the program's output.
 
 ###### 1.2.1.1 Glich Value Types
 
-In Glich, a value is one of ten types:-
+Glich is an untyped language.
+This doesn't mean there are no types,
+just that the types do not need to be declared
+and can change depending on context.
+It is also possible to change the type using built-in functions.
+
+In Glich there are ten possible types a value can take:-
 
 | Type | Example | Note |
 | ---  | --- | --- |
-| Number | 123 or 123n | 64-bit integer (Approx. +/- nine quintillion) |
+| Number | 123 or 123n | 64-bit integer (Range approx. +/- nine quintillion) |
 | Field | 456 or 456f | 32-bit integer with +/-infinity and ? (Not a number) |
 | Range | 5..10 | A range  of field values. |
 | RList | 1..20 \| 30..35 | A list of ranges |
@@ -122,7 +128,17 @@ In Glich, a value is one of ten types:-
 | Error | Error (3): Must be integer. | Error in expression. |
 | Null | null | Not assigned a value. |
 
+Both number and field are integer values
+but normally we do not need distinguish between them.
+The script will convert them as required.
 
+###### 1.2.1.2 Literal Values.
+
+
+By default, a plain integer will default to a number type
+unless the integer is followed by an **f** (123f).
+The can be changed using the **set** statement,
+as we will see later.
 
 
 ##### 1.2.2 Let Statement and Variables
