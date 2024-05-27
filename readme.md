@@ -185,16 +185,15 @@ New line characters can also be included within the quotes.
 
 Expressions and their operators can be classified as follows:-
 
-| Category | Operators |  |
-| --- | --- | --- |
-| Arithmetic | Plus, Minus (binary and unitary), Multiply, Divide (Float and integer) and Modulo | |
-| Set Operators | Range, Union, Intersection, Symmetric difference, Relative complement and Complement | |
-| Comparison | Not, Equal, Not equal, Greater than, Greater than or equal, Less than, Less than or equal | |
-| Boolean | Not, And, Inclusive or | |
-| Grouping | Parenthesis, Object literal | |
-| Subscript | Member, Property | |
-| Function | Function (binary and unitary) | |
-| Text Strings | Concatenation | |
+| Category | Operators |
+| --- | --- |
+| Arithmetic | Plus, Minus (binary and unitary), Multiply, Divide (Float and integer) and Modulo |
+| Text Strings | Concatenation |
+| Comparison | Not, Equal, Not equal, Greater than, Greater than or equal, Less than, Less than or equal |
+| Boolean | Not, And, Inclusive or |
+| Set Operators | Range, Union, Intersection, Symmetric difference, Relative complement and Complement |
+| Subscript | Member, Property |
+| Function | Function (binary and unitary) |
 
 Note that other operations are implemented as built-in functions,
 such as the @if(comparison, if_true, if_false) function.
@@ -213,7 +212,28 @@ write 5 * 20 + 1;
 ```
 Will output `101`.
 
-###### 1.2.1.3.2 Extended Integer Set Operations
+###### 1.2.1.3.2 Text String Operations
+
+The **+** operator is also used for **string Concatenation**.
+
+ If both sides of the operator are string values,
+ the right hand side will be appended to the left hand.
+ If just one side is a string value
+ then the other side is converted to a string first.
+
+###### 1.2.1.3.3 Comparison Operations
+
+The comparison operators must have operands of the same type,
+after type allowing for type promotion.
+The output is always a boolean type.
+
+###### 1.2.1.3.4 Boolean Operations
+
+The unary prefix operator 'not' and
+the binary operators 'and' and 'or' can be used with boolean types only.
+Any other type will produce an error
+
+###### 1.2.1.3.5 Extended Integer Set Operations
 
 The set operations all operate on the **field**, **range** and **rlist**
 value types.
@@ -250,13 +270,82 @@ but if the hics extension library is loaded,
 the keywords are changed to **past** and **future**.
 This can always be changed using the **set context** statement.
 
-The **Complement operator** **!** exclamation character 
+The **Complement operator** **!** exclamation character.
+This applies the **not** operator to every member of the
+extended integer set.
 ```
 set context glich;
 write !0;
 ```
-Output: `-infinity..-1 | 1..+infinity`
+Output: `-infinity..-1 | 1..+infinity`.
 
+The **Union operator** **|** vertical bar character.
+This applies the **or** operator to every member pair of the
+extended integer set.
+```
+write 20..75 | 50..100;
+```
+Will output: `20..100`.
+
+The **Intersection operator** **&** ampersand character.
+This applies the **and** operator to every member pair of the
+extended integer set.
+```
+write 20..75 & 50..100;
+```
+Will output: `50..75`.
+
+The **Symmetric Difference operator** **^** caret character.
+This applies the **exclusive or** operator to every member pair of the
+extended integer set.
+```
+write 20..75 ^ 50..100;
+```
+Will output: `20..49 | 76..100`.
+
+The **Relative complement operator** **\** backslash character.
+This applies the **& !** operator to every member pair of the
+extended integer set.
+This is the only set operation in which the order of the input is significant.
+```
+write 20..75 \ 50..100;
+```
+Will output: `20..49`. and
+```
+write 50..100 \ 20..75;
+```
+Will output: `76..100`.
+
+###### 1.2.1.3.6 Subscript Operations
+
+The **Subscript operators** uses the **[ ]** square brackets.
+It is named subscript because usually in mathematics,
+these would be written as a subscript to their main value.
+
+There are two types of subscripts, index and property.
+
+The **Index Subscript operator** is used with either rlist
+or object types.
+```
+write (8..16 | 20..50 | 75..99)[1];
+```
+Will output: `20..50`.
+
+```
+write {: 2024, 5, 27}[0];
+```
+Will output: `2024`.
+
+As we will see later, objects can have named members.
+These can be accessed by using the name (either as a string or a name).
+```
+write {s:g 2024, 5, 27}[day];
+// or
+write {s:g 2024, 5, 27}["day"];
+```
+Will output: `27`.
+
+###### 1.2.1.3.7 Functions
 
 
 #### 1.2.2 Let Statement and Variables
