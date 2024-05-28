@@ -347,6 +347,25 @@ Will output: `27`.
 
 ###### 1.2.1.3.7 Functions
 
+A function may be build-in
+or user defined using the function definition statement.
+
+Functions are introduced using the **Function operator** **@** at character.
+The unitary function takes optional arguments and outputs a value
+following the definition of the function.
+```
+let x = 5;
+write @if( x < 10, "x is less than 10", "x is 10 or more" );
+```
+Will output `x is less than 10`.
+
+The binary function has an object as the first operand
+and a function declared as part of the object.
+Some built-in functions can operate on any object.
+```
+write {: 1,,3,,,6} @mask( {: 10,20,,40} );
+```
+Will output `{: 1, 20, 3, 40, null, 6}`.
 
 #### 1.2.2 Let Statement and Variables
 
