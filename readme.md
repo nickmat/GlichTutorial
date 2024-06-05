@@ -369,7 +369,50 @@ Will output `{: 1, 20, 3, 40, null, 6}`.
 
 #### 1.2.2 Let Statement and Variables
 
-1.2.3 Mark Statement
+The **let** is used to create and change named variables.
+
+##### 1.2.2.1 Variable Assignment
+
+`let` can be used with the basic assignment operator `=` equal sign.
+
+```
+let x = 123;
+write x;
+```
+Will output `123`.
+
+The first time a variable is named
+the `let` statement name must be used,
+but in subsequent uses the `let` may be omitted.
+
+```
+let x = 123;
+write x,;
+x = 456;
+write x;
+```
+Will output `123, 456`.
+
+Note: In the `write` statement,
+following an expression with a `,` commer
+will output a commer followed by a space.
+This can be used to write a commer separated list to the output device.
+
+##### 1.2.2.2 Variable Arithmetic Assignment
+
+As well as simple assignment,
+we can use the **Arithmetic Assignments** `+=`, `-=`, `*=` and `/=`
+to modify an existing variable.
+
+```
+let count = 1;
+write count,;
+count += 1;
+write count;
+```
+Will output `1, 2`.
+
+#### 1.2.3 Mark Statement
 
 1.2.3 File Statement and Input, Output
 
