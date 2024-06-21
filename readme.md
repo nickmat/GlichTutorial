@@ -373,7 +373,8 @@ The **let** is used to create and change named variables.
 
 ##### 1.2.2.1 Variable Assignment
 
-`let` can be used with the basic assignment operator `=` equal sign.
+The `let` statement
+can be used with the basic assignment operator `=` equal sign.
 
 ```
 let x = 123;
@@ -413,6 +414,32 @@ write count;
 Will output `1, 2`.
 
 #### 1.2.3 Mark Statement
+
+Note that variables and definitions are remembered by the host program
+even after the script has stopped running.
+This can cause problems if you want to run the same script multiple times,
+as definitions can only be created once.
+
+The `mark` statement
+can be used the reset the internal memory back to where it was
+when the **mark** was first encountered.
+So starting a script with a mark statement
+will ensure every time it is run, the internal memory state
+will be the same.
+
+The mark statement is written as:-
+```
+mark tag;
+```
+Where `tag` is a *name or literal* value.
+```
+mark test;
+let x = 10;
+write x,;
+mark test;
+write x;
+```
+Will output `10, Error (5): Variable "x" not found.`
 
 1.2.3 File Statement and Input, Output
 
