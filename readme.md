@@ -192,7 +192,7 @@ Expressions and their operators can be classified as follows:-
 | Comparison | Not, Equal, Not equal, Greater than, Greater than or equal, Less than, Less than or equal |
 | Boolean | Not, And, Inclusive or |
 | Set Operators | Range, Union, Intersection, Symmetric difference, Relative complement and Complement |
-| Subscript | Member, Property |
+| Subscript | Index, Member |
 | Function | Function (binary and unitary) |
 
 Note that other operations are implemented as built-in functions,
@@ -442,6 +442,25 @@ write x;
 Will output `10, Error (5): Variable "x" not found.`
 
 1.2.3 File Statement and Input, Output
+
+To redirect output to a file, instead of the default output,
+We need to define a file code using the **file** statement.
+```
+mark test;
+let fname = "notes.txt";
+file out write fname;
+write.out "A line of text." nl;
+```
+Will create a text file named "notes.txt" in the current directory,
+or if the file already exists, its contents will be deleted.
+The write statement will enter the text "A line of text."
+to the file.
+
+```
+file in read fname;
+write @read.in nl;
+```
+Will write the first line (`A line of text.`) of the file to the standard output.
 
 1.3 Script Construction
 
