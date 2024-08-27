@@ -464,9 +464,72 @@ Will write the first line (`A line of text.`) of the file to the standard output
 
 1.3 Script Construction
 
-1.3.1 If Statement
+Glich has two statements to control the program flow,
+the **do ... loop** and **if ... endif** statements.
 
-1.3.2 Do Loop Statement
+1.3.1 Do Loop Statement
+
+The statements between the `do ... loop` will be executed
+until either a **while** *condition* **;**
+sub-statement is `false`
+or an **until** *condition* **;** is `true`.
+
+```
+let i = 1;
+do
+    write i;
+    until i = 10;
+    write ", ";
+    i += 1;
+loop
+````
+Will output `1, 2, 3, 4, 5, 6, 7, 8, 9, 10`.
+
+```
+let a = {: "one", "two", "three"};
+let i = 0;
+do
+    write a[(i)];
+    i += 1;
+    while i < @size(a);
+    write ", ";
+loop
+```
+will output `one, two, three`.
+
+Note that the index `i` needs to be in parenthesis `a[(i)]`
+to avoid it being mistaken for a value named `i`.
+
+1.3.2 If Statement
+
+the **if** statement with the optional *elseif** and **else**
+sections will carry out selected statements
+depending on the conditions set. 
+
+```
+let x = 10;
+if x<>0
+    write x;
+endif
+```
+Will write `10` to the standard output.
+
+```
+let x = 0;
+do
+    x += 1;
+    if x = 3
+        write "x is 3";
+    elseif x mod 2 = 0
+        write "x is even";
+    else
+        write "x is odd but not three"; 
+    endif
+    until x = 5;
+    write ", ";
+loop
+```
+Will output `x is odd but not three, x is even, x is 3, x is even, x is odd but not three`
 
 1.3.3 Function and Command Statements
 
