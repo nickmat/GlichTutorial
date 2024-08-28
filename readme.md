@@ -467,6 +467,14 @@ Will write the first line (`A line of text.`) of the file to the standard output
 Glich has two statements to control the program flow,
 the **do ... loop** and **if ... endif** statements.
 
+It also has two subroutine definition statements:
+- **function** *fcode* **{** *sub-statements* **}**
+- **command** *ccode* **{** *sub-statements* **}**
+
+With the function being called with the function operator **@**
+as in **@fcode**
+and the command with the **call ccode;** statement.
+
 1.3.1 Do Loop Statement
 
 The statements between the `do ... loop` will be executed
@@ -531,11 +539,39 @@ loop
 ```
 Will output `x is odd but not three, x is even, x is 3, x is even, x is odd but not three`
 
-1.3.3 Function and Command Statements
+1.3.3 Function Definition Statement and Operator
 
-1.3.4 End Statement
+Functions must be defined before they can be used.
+They may include *arguments* in parenthesis,
+which appear as local variables within the definition.
+A local variable call **result** is also available,
+and holds the return value of the function.
+```
+function fun( a, b ) {
+    result = a + b;
+}
+write @fun( 7, 4 );
+```
+Will output `11`.
 
-1.3.5 Call Statement
+A function may also have a *qualifier*.
+This is written after a dot **'.'** following the function name
+and before any arguments.
+```
+function fun.qual( a, b ) {
+    if qual = "mult"
+        result = a * b;
+    else
+        result = a + b;
+    endif
+}
+write @fun( 7, 4 ), @fun.mult( 7, 4 );
+```
+Will output `11, 28`.
+
+1.3.4  Command Definition and Call Statements
+
+1.3.5 End Statement
 
 1.4. Built-in Functions and Commands
 
