@@ -441,7 +441,7 @@ write x;
 ```
 Will output `10, Error (5): Variable "x" not found.`
 
-1.2.3 File Statement and Input, Output
+#### 1.2.3 File Statement and Input, Output
 
 To redirect output to a file, instead of the default output,
 We need to define a file code using the **file** statement.
@@ -462,7 +462,7 @@ write @read.in nl;
 ```
 Will write the first line (`A line of text.`) of the file to the standard output.
 
-1.3 Script Construction
+### 1.3 Script Construction
 
 Glich has two statements to control the program flow,
 the **do ... loop** and **if ... endif** statements.
@@ -475,7 +475,7 @@ With the function being called with the function operator **@**
 as in **@fcode**
 and the command with the **call ccode;** statement.
 
-1.3.1 Do Loop Statement
+#### 1.3.1 Do Loop Statement
 
 The statements between the `do ... loop` will be executed
 until either a **while** *condition* **;**
@@ -508,7 +508,7 @@ will output `one, two, three`.
 Note that the index `i` needs to be in parenthesis `a[(i)]`
 to avoid it being mistaken for a value named `i`.
 
-1.3.2 If Statement
+#### 1.3.2 If Statement
 
 the **if** statement with the optional *elseif** and **else**
 sections will carry out selected statements
@@ -539,7 +539,7 @@ loop
 ```
 Will output `x is odd but not three, x is even, x is 3, x is even, x is odd but not three`
 
-1.3.3 Function Definition Statement and Operator
+#### 1.3.3 Function Definition Statement and Operator
 
 Functions must be defined before they can be used.
 They may include *arguments* in parenthesis,
@@ -554,7 +554,7 @@ write @fun( 7, 4 );
 ```
 Will output `11`.
 
-1.3.3.1 Function Qualifiers
+##### 1.3.3.1 Function Qualifiers
 
 A function may also have a *qualifier*.
 This is written after the dot **'.'** operator following the function name
@@ -588,7 +588,7 @@ let op = "mult";
 write @fun.(op)(7,4) nl;
 ``` 
 
-1.3.3.2 Function Argument Default Values
+##### 1.3.3.2 Function Argument Default Values
 
 The function arguments (but not the qualifier) may be given default values.
 These values will be used whenever a **null** value is used when calling
@@ -620,34 +620,61 @@ write @mult;
 ```
 Will output `100`.
 
-1.3.4  Command Definition and Call Statements
+#### 1.3.4  Command Definition and Call Statements
 
-1.3.5 End Statement
+The command is similar to a function except
+whereas a function is called with the function operator
+and forms part of an expression,
+the command forms part of a **call** statement.
+Only an error result is recognised,
+which will causes the call statement to fail.
 
-1.4. Built-in Functions and Commands
+The command definition statement is identical to the function statement.
+```
+command two.op( x = 10 ) {
+    if op = "plus" or op = ""
+        write x + 2 nl;
+    elseif op = "mult"
+        write x * 2 nl;
+    else
+        result = @error( "Qualifier must be plus or mult." );
+    endif 
+}
+call two.mult(5);
+call two(8);
+call two;
+call two.xxx(0);
+```
+will output 4 lines, `10`, `10`, `2` and `Error (7): Qualifier must be plus or mult.`.
 
-1.4.1 General Purpose Functions
+The command and call statements are still being developed and may change in the future.
 
-1.4.2 Type Conversion Functions
+#### 1.3.5 End Statement
 
-1.5 Object Definition
+### 1.4. Built-in Functions and Commands
 
-1.5.1 Built-in Object
+#### 1.4.1 General Purpose Functions
 
-1.6 Set Statement
+#### 1.4.2 Type Conversion Functions
 
-1.6.1 Set Integer
+### 1.5 Object Definition
 
-1.6.2 Set Context
+#### 1.5.1 Built-in Object
 
-2 Hics Extension
+### 1.6 Set Statement
 
-2.1 Scheme Statement
+#### 1.6.1 Set Integer
 
-2.2 Built-in Functions
+#### 1.6.2 Set Context
 
-2.3 Grammar and Format Statements
+## 2 Hics Extension
 
-2.4 Lexicon Statement
+### 2.1 Scheme Statement
 
-3 Hics Library
+### 2.2 Built-in Functions
+
+### 2.3 Grammar and Format Statements
+
+### 2.4 Lexicon Statement
+
+## 3 Hics Library
