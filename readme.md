@@ -554,8 +554,10 @@ write @fun( 7, 4 );
 ```
 Will output `11`.
 
+1.3.3.1 Function Qualifiers
+
 A function may also have a *qualifier*.
-This is written after a dot **'.'** following the function name
+This is written after the dot **'.'** operator following the function name
 and before any arguments.
 ```
 function fun.qual( a, b ) {
@@ -568,6 +570,55 @@ function fun.qual( a, b ) {
 write @fun( 7, 4 ), @fun.mult( 7, 4 );
 ```
 Will output `11, 28`.
+
+The qualifier is always a text value.
+If the function is called with a qualifier conforming to a glich name,
+then the text quotation marks are optional.
+
+To call the function with a text expression or a variable,
+use parenthesis.
+
+Given the above function definition,
+the following will output 4 lines with the value `28`.
+```
+write @fun.mult(7,4) nl;
+write @fun."mult"(7,4) nl;
+write @fun.("mu" + "lt")(7,4) nl;
+let op = "mult";
+write @fun.(op)(7,4) nl;
+``` 
+
+1.3.3.2 Function Argument Default Values
+
+The function arguments (but not the qualifier) may be given default values.
+These values will be used whenever a **null** value is used when calling
+the the function.
+```
+function mult(m1=50, m2=2) {
+    result = m1 * m2;
+}
+write @mult(null,null), @mult(20,null), @mult(null,3), @mult(4,5);
+```
+Will output `100, 40, 150, 20`.
+
+A null value may be implied by leaving the place blank,
+as in (given the above definition):-
+```
+write @mult(,), @mult(20,), @mult(,3);
+```
+Will output `100, 40, 150`.
+
+The trailing commas may also be omitted:-
+```
+write @mult(), @mult(20);
+```
+Will output `100, 40`.
+
+And if the parenthesis are empty, they may omitted as well.
+```
+write @mult;
+```
+Will output `100`.
 
 1.3.4  Command Definition and Call Statements
 
