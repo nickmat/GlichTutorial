@@ -651,6 +651,28 @@ The command and call statements are still being developed and may change in the 
 
 #### 1.3.5 End Statement
 
+The **end** statement is used to end the script processing.
+If used within a function or command it will immediately exit the function or command.
+```
+function double(x) {
+    if @type(x) <> "number"
+        end;
+    endif
+    result = x * 2;
+}
+write @double(10n), @double(10f) nl;
+```
+Will output `20, null`.
+
+If used within the body of the script (sometimes known as 'level zero')
+then the script will stop running.
+```
+write "So far so good." nl;
+end;
+write "We never get this far." nl;
+```
+Will only output `So far so good.`, the next write statement is not reached.
+
 ### 1.4. Built-in Functions and Commands
 
 #### 1.4.1 General Purpose Functions
