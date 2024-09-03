@@ -673,11 +673,46 @@ write "We never get this far." nl;
 ```
 Will only output `So far so good.`, the next write statement is not reached.
 
-### 1.4. Built-in Functions and Commands
-
+### 1.4. Built-in Functions
 #### 1.4.1 General Purpose Functions
 
+Function | Description
+--- | ---
+**@if(** *comp, t, f* **)** | Returns *t* if *comp* is true and *f* if false.
+**@quote(** *value* **)** | Stringize *value* and enclose in **""** quotes.
+**@read.**  *input* **(** *prompt* **)** | Obtain text from file *input* or console.
+**@filesys** | Examine and control the file system.
+**@version** | Return the current Glich version.
+
+##### 1.4.1.1 Function: @if(comp, t, f)
+The @if function behaves similar to the C language ? : tertiary operator.
+```
+let x = 7;
+write @if(x<10, "low", "high" ),;
+x += 5;
+write @if(x<10, "low", "high" );
+```
+Will output `low, high`
+
+##### 1.4.1.2 Function: @quote( value )
+The @quote function converts any value type (including error types) to a string value
+and encloses it in "" quotation marks.
+```
+let t = "Hello";
+write t, @quote( t ), 100, @quote( 100 );
+```
+Will output `Hello, "Hello", 100, "100"`
+
+Any quote marks within a string will be doubled up.
+```
+let t = @quote("hi") + " they said";
+write t, @quote( t );
+```
+Will output `"hi" they said, """hi"" they said"`
+
 #### 1.4.2 Type Conversion Functions
+
+#### 1.4.3 Value Property Functions
 
 ### 1.5 Object Definition
 
