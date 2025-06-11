@@ -710,6 +710,10 @@ write t, @quote( t );
 ```
 Will output `"hi" they said, """hi"" they said"`
 
+##### 1.4.1.2 Function: @read.input( value )
+
+
+
 #### 1.4.2 Type Conversion Functions
 
 #### 1.4.3 Value Property Functions
